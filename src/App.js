@@ -5,17 +5,22 @@ import './App.css';
 import Header from './components/Header';
 import Home from './components/Home';
 import Checkout from './components/Checkout'
+import Login from './components/Login'
 
 const App = () => {
   return (
   <Router>
     <div className="app">
-      <Header/>
       <Switch>
-        <Route path="/checkout">  
+        <Route path="/login">  
+          <Login/>
+        </Route>
+        <Route path="/checkout">
+          <Header/>  
           <Checkout/>
         </Route>
         <Route path="/">
+          <Header/>
           <Home/>
         </Route>
       </Switch>
