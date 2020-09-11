@@ -16,38 +16,14 @@ export default () => {
 
                 <div className="home__row">
                     <Product
-                        id={"123124"} 
+                        id={"123124ggsdfds"} 
                         title="The lean startup"
                         price={29.99}
                         image={"https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg"}
                         rating={4}
                     />
                     <Product
-                        id={"123124"} 
-                        title="The lean startup"
-                        price={29.99}
-                        image={"https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg"}
-                        rating={4}
-                    />
-                </div>
-
-                <div className="home__row">
-                    <Product
-                        id={"123124"} 
-                        title="The lean startup"
-                        price={29.99}
-                        image={"https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg"}
-                        rating={4}
-                    />
-                    <Product
-                        id={"123124"} 
-                        title="The lean startup"
-                        price={29.99}
-                        image={"https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg"}
-                        rating={4}
-                    />
-                    <Product
-                        id={"123124"} 
+                        id={"123124ggg"} 
                         title="The lean startup"
                         price={29.99}
                         image={"https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg"}
@@ -57,7 +33,31 @@ export default () => {
 
                 <div className="home__row">
                     <Product
-                        id={"123124"} 
+                        id={"123124s"} 
+                        title="The lean startup"
+                        price={29.99}
+                        image={"https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg"}
+                        rating={4}
+                    />
+                    <Product
+                        id={"123124wqeqwe"} 
+                        title="The lean startup"
+                        price={29.99}
+                        image={"https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg"}
+                        rating={4}
+                    />
+                    <Product
+                        id={"123124wqedasd"} 
+                        title="The lean startup"
+                        price={29.99}
+                        image={"https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg"}
+                        rating={4}
+                    />
+                </div>
+
+                <div className="home__row">
+                    <Product
+                        id={"123124dasdafsaf"} 
                         title="The lean startup"
                         price={29.99}
                         image={"https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg"}

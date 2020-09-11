@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import './Header.css'
@@ -10,6 +10,7 @@ import {auth} from '../firebase'
 export default () => {
 
     const [{basket, user}, dispatch] = useStateValue();
+    const history = useHistory();
 
     const handleAuth = () => {
         if(user){
@@ -29,7 +30,7 @@ export default () => {
             </div>
 
             <div className="header__nav">
-                <Link to={!user && "/login"}>
+                <Link to={!user ?  "/login" : history.location.pathname}>
                     <div onClick={handleAuth} className="header__option">
                         <span className="header__optionLineOne">Hello {user && user.email}</span>
                         <span className="header__optionLineTwo">{user ? "Sign Out" : "Sign In"}</span>

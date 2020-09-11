@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import FlipMove from 'react-flip-move';
 import Subtotal from './Subtotal'
 import './Checkout.css'
 import {useStateValue} from '../StateProvider'
@@ -19,19 +20,20 @@ export default () => {
                     <h2 className="checkout__title">
                         Your shopping basket
                     </h2>
-
-                    {
-                        basket.map(item => (
-                            <CheckoutProduct
-                                key={item.id}
-                                id={item.id}
-                                title={item.title}
-                                image={item.image}
-                                price={item.price}
-                                rating={item.rating}
-                            />
-                        ))
-                    }
+                    <FlipMove leaveAnimation="elevator">
+                        {
+                            basket.map(item => (
+                                <CheckoutProduct
+                                    key={item.id}
+                                    id={item.id}
+                                    title={item.title}
+                                    image={item.image}
+                                    price={item.price}
+                                    rating={item.rating}
+                                />
+                            ))
+                        }
+                    </FlipMove>
                 </div>
 
             </div>
