@@ -19,3 +19,6 @@ App that emulates Amazon.
 - `unique ID => name of clone => build => yes`
 - `npm run build` (run everytime new change)
 - `firebase deploy`
+
+## Stripe Setup
+- 

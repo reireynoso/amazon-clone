@@ -23,44 +23,44 @@ export default () => {
                         rating={4}
                     />
                     <Product
-                        id={"123124ggg"} 
-                        title="The lean startup"
-                        price={29.99}
-                        image={"https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg"}
+                        id={"rokuexpress2019"} 
+                        title="Roku Express HD Streaming Media Player 2019"
+                        price={29.00}
+                        image={"https://images-na.ssl-images-amazon.com/images/I/81T70LF0wWL._AC_SL1500_.jpg"}
+                        rating={5}
+                    />
+                </div>
+
+                <div className="home__row">
+                    <Product
+                        id={"watchstand"} 
+                        title="Ikee Design Antique Color (Brown) Wooden Display Jewelry Accessory Stand"
+                        price={10.29}
+                        image={"https://images-na.ssl-images-amazon.com/images/I/515Q5uzDYfL._AC_SL1000_.jpg"}
+                        rating={4}
+                    />
+                    <Product
+                        id={"sandiskextremepro"} 
+                        title="SanDisk Extreme Pro MicroSDXC UHS-I U3 A2 V30 64GB + Adapter"
+                        price={18.45}
+                        image={"https://images-na.ssl-images-amazon.com/images/I/61OjQlburwL._AC_SL1100_.jpg"}
+                        rating={5}
+                    />
+                    <Product
+                        id={"samsungbarplus"} 
+                        title="Samsung BAR Plus USB 3.1 Flash Drive 128GB - 300MB/s (MUF-128BE3/AM) - Champagne Silver"
+                        price={20.99}
+                        image={"https://images-na.ssl-images-amazon.com/images/I/81LwWPCRV%2BL._AC_SL1500_.jpg"}
                         rating={4}
                     />
                 </div>
 
                 <div className="home__row">
                     <Product
-                        id={"123124s"} 
-                        title="The lean startup"
-                        price={29.99}
-                        image={"https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg"}
-                        rating={4}
-                    />
-                    <Product
-                        id={"123124wqeqwe"} 
-                        title="The lean startup"
-                        price={29.99}
-                        image={"https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg"}
-                        rating={4}
-                    />
-                    <Product
-                        id={"123124wqedasd"} 
-                        title="The lean startup"
-                        price={29.99}
-                        image={"https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg"}
-                        rating={4}
-                    />
-                </div>
-
-                <div className="home__row">
-                    <Product
-                        id={"123124dasdafsaf"} 
-                        title="The lean startup"
-                        price={29.99}
-                        image={"https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg"}
+                        id={"seagateonetouchssd"} 
+                        title="Seagate One Touch SSD 500GB External Solid State Drive Portable – Black, USB 3.0 for PC Laptop and Mac, 1yr Mylio Create, 2 months Adobe CC Photography (STJE500400)"
+                        price={79.00}
+                        image={"https://images-na.ssl-images-amazon.com/images/I/915Wwi1mn-L._AC_SL1500_.jpg"}
                         rating={4}
                     />
                 </div>

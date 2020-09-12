@@ -25,7 +25,7 @@ export default forwardRef(({id,image,title,price,rating}, ref) => {
                     {
                         Array(rating)
                         .fill()
-                        .map(() => (<p>🌟</p>))
+                        .map((_, index) => (<p key={index}>🌟</p>))
                     }
                 </div>
                 <button onClick={removeFromBasket}>Remove from basket</button>

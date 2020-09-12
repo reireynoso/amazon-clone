@@ -9,6 +9,7 @@ import CheckoutProduct from './CheckoutProduct'
 export default () => {
 
     const [{basket, user}, dispatch] = useStateValue();
+
     return (
         <div className="checkout"> 
             <div className="checkout__left">
