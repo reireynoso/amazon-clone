@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import './App.css';
 
 import Header from './components/Header';
+import Footer from './components/Footer'
 import Home from './components/Home';
 import Checkout from './components/Checkout'
 import Login from './components/Login'
@@ -44,14 +45,17 @@ const App = () => {
         <Route path="/checkout">
           <Header/>  
           <Checkout/>
+          <Footer/>
         </Route>
         <Route path="/payment">
           <Header/>  
           <Payment/>
+          <Footer/>
         </Route>
         <Route path="/">
           <Header/>
           <Home/>
+          <Footer/>
         </Route>
       </Switch>
     </div>

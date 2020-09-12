@@ -12,7 +12,8 @@
     width: 100px;
     object-fit: contain; 
     margin: 0 20px;
-    margin-top: 18px;
+    margin-top: 10px;
+    padding: 5px;
 }
 
 .header__search {
@@ -68,4 +69,8 @@
 
 .header__basketCount {
     margin: 0 10px;
+}
+
+.header__option:hover, .header__optionBasket:hover, .header__logo:hover {
+    border: 1px solid white;
 }
