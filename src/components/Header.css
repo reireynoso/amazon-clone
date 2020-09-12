@@ -71,6 +71,10 @@
     margin: 0 10px;
 }
 
+.header__option, .header__optionBasket, .header__logo{
+    border: 1px solid #131921;
+}
+
 .header__option:hover, .header__optionBasket:hover, .header__logo:hover {
     border: 1px solid white;
 }

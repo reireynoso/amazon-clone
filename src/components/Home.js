@@ -1,6 +1,7 @@
 import React from 'react'
 import './Home.css'
-
+import {Carousel} from 'react-responsive-carousel'
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Product from './Product'
 
 export default () => {
@@ -8,11 +9,46 @@ export default () => {
     return (
         <div className="home">
             <div className="home__container">
-                <img 
-                    className="home__image" 
-                    src="https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg" 
-                    alt="home"
-                />
+                <Carousel
+                    autoPlay 
+                    showArrows={true} 
+                    showThumbs={false} 
+                    showIndicators={false} 
+                    showStatus={false} 
+                    infiniteLoop={true}
+                    interval={7000}
+                    >         
+                        <img 
+                            className="home__image" 
+                            src="https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg" 
+                            alt="home"
+                        />
+
+                        <img 
+                            className="home__image" 
+                            src="https://images-na.ssl-images-amazon.com/images/G/01/PLF/MOON_BACK/MB-HA-2020/HEROES/MB-SLEEPBABYKIDS-2_GW_Amazon_GRD_DesktopHero_Template_3000x1200_1x._CB410257358_.jpg" 
+                            alt="home"
+                        />
+
+                        <img 
+                            className="home__image" 
+                            src="https://images-na.ssl-images-amazon.com/images/G/01/digital/video/merch/2020/TV/THBY_S2/AMZN_TheBoys-S2_WEEK1_GWBleedingHero_1x_1500x600_en-US_f._CB407833826_.jpg" 
+                            alt="home"
+                        />
+
+                        <img 
+                            className="home__image" 
+                            src="https://images-na.ssl-images-amazon.com/images/G/01/kindle/journeys/YjJkZWQ0NTgt/YjJkZWQ0NTgt-MWE1MmNlZDAt-w1500._CB406132032_.jpg" 
+                            alt="home"
+                        />
+
+                        <img 
+                            className="home__image" 
+                            src="https://images-na.ssl-images-amazon.com/images/G/01/marketing/prime/Brand/JD/2020/Perception-Test-Sep20/prime_ufg_desktophero_message2_en_1500x600._CB406595857_.jpg" 
+                            alt="home"
+                        />
+                   
+                </Carousel>
 
                 <div className="home__row">
                     <Product
