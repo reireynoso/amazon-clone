@@ -1,9 +1,11 @@
 .login {
-    background-color: white;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-image: url("https://static.seattletimes.com/wp-content/uploads/2017/07/07262017_amazon500_new_134902-1536x1001.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .login__logo {
@@ -22,6 +24,7 @@
     border-radius: 5px;
     border: 1px solid lightgray;
     padding: 20px;
+    background-color: rgba(255, 255, 255, 0.7)
 }
 
 .login__container > h1 {

@@ -26,16 +26,17 @@ export default () => {
     useEffect(() => {
         //generate the special stripe secret whcih allows us to charge a customer
         const getClientSecret = async () => {
-            if(basket && basket.length > 0){
-                const response = await axios({
-                    method: "post",
-                    // stripe expect the total in a currencies subunits. i.e dollars is expected in cents
-                    url: `/payments/create?total=${getBasketTotal(basket).toFixed(2) * 100}`
-                })
-                setClientSecret(response.data.clientSecret)
-            }
+            const response = await axios({
+                method: "post",
+                // stripe expect the total in a currencies subunits. i.e dollars is expected in cents
+                url: `/payments/create?total=${getBasketTotal(basket).toFixed(2) * 100}`
+            })
+            setClientSecret(response.data.clientSecret)
         }
-        getClientSecret();
+
+        if(basket && basket.length > 0){
+            getClientSecret();
+        }
 
     }, [basket])
 
@@ -109,7 +110,10 @@ export default () => {
                     </div>
 
                     <div className="payment__items">
-                        <FlipMove leaveAnimation="elevator">
+                        {
+                            //<FlipMove leaveAnimation="elevator">
+
+                        }
                         {
                             basket.map(item => (
                                 <CheckoutProduct
@@ -122,7 +126,10 @@ export default () => {
                                 />
                             ))
                         }
-                        </FlipMove>
+                        {
+
+                        //    </FlipMove>
+                        }
                     </div>
                 </div>
 
@@ -145,10 +152,13 @@ export default () => {
                                     thousandSeparator={true}
                                     prefix={"$"}
                                 />
-
-                                <button disabled={processing || disabled || succeeded}>
-                                        <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
-                                </button>
+                                
+                                {
+                                    !user ? <span onClick={() => history.push('/login')} className="payment__alert">Please login first</span> : <button disabled={processing || disabled || succeeded}>
+                                            <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
+                                    </button>
+                                }
+                                
                             </div>
 
                             {

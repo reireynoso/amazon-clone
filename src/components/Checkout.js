@@ -21,7 +21,9 @@ export default () => {
                     <h2 className="checkout__title">
                         Your shopping basket
                     </h2>
-                    <FlipMove leaveAnimation="elevator">
+                    {
+                        //<FlipMove leaveAnimation="elevator">
+                    }
                         {
                             basket.map(item => (
                                 <CheckoutProduct
@@ -34,7 +36,9 @@ export default () => {
                                 />
                             ))
                         }
-                    </FlipMove>
+                    {
+                        //</FlipMove>
+                    }
                 </div>
 
             </div>

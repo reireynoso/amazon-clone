@@ -6,18 +6,24 @@ import { store } from 'react-notifications-component';
 export default ({id, title, image,price,rating}) => {
     // destructured from state first arg
     const [{basket}, dispatch] = useStateValue();
+
+    const notification = <div className="product__notification">
+        <img src={image}/>
+        <p>{title}</p>
+    </div>
+
     const addToBasket = () => {
 
         store.addNotification({
-            title: title,
-            message: "Added to cart",
+            title: "Added to cart!",
+            message: notification,
             type: "info",
             insert: "bottom",
             container: "top-right",
             animationIn: ["animate__animated", "animate__fadeIn"],
             animationOut: ["animate__animated", "animate__fadeOut"],
             dismiss: {
-              duration: 2000,
+              duration: 17500,
               onScreen: true,
               showIcon:true
             },

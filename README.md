@@ -15,6 +15,7 @@ App that emulates Amazon.
 - Stripe API
 - Axios
 - Moment 
+- React Notifications Component
 
 ## Credits
 - Images (including items, logos, and home) are from Amazon and are only utilized for demonstration purposes.
