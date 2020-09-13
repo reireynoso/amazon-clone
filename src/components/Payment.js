@@ -8,6 +8,7 @@ import CurrencyFormat from 'react-currency-format';
 import {getBasketTotal} from '../selector';
 import axios from '../axios';
 import {db} from '../firebase';
+import FlipMove from 'react-flip-move';
     
 export default () => {
 
@@ -25,18 +26,20 @@ export default () => {
     useEffect(() => {
         //generate the special stripe secret whcih allows us to charge a customer
         const getClientSecret = async () => {
-            const response = await axios({
-                method: "post",
-                // stripe expect the total in a currencies subunits. i.e dollars is expected in cents
-                url: `/payments/create?total=${getBasketTotal(basket).toFixed(2) * 100}`
-            })
-            setClientSecret(response.data.clientSecret)
+            if(basket && basket.length > 0){
+                const response = await axios({
+                    method: "post",
+                    // stripe expect the total in a currencies subunits. i.e dollars is expected in cents
+                    url: `/payments/create?total=${getBasketTotal(basket).toFixed(2) * 100}`
+                })
+                setClientSecret(response.data.clientSecret)
+            }
         }
         getClientSecret();
 
     }, [basket])
 
-    console.log("THE SECRET IS >>>>> ", clientSecret)
+    // console.log("THE SECRET IS >>>>> ", clientSecret)
     const handleSubmit = async e => {
         e.preventDefault();
         setProcessing(true);
@@ -106,9 +109,11 @@ export default () => {
                     </div>
 
                     <div className="payment__items">
+                        <FlipMove leaveAnimation="elevator">
                         {
                             basket.map(item => (
                                 <CheckoutProduct
+                                    key={item.id}
                                     id={item.id}
                                     title={item.title}
                                     image={item.image}
@@ -117,6 +122,7 @@ export default () => {
                                 />
                             ))
                         }
+                        </FlipMove>
                     </div>
                 </div>
 

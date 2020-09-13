@@ -27,18 +27,29 @@ app.get('/', (req,res) => {
 })
 
 app.post('/payments/create', async(req,res) => {
-    const total = req.query.total;
+    
+    // console.log('Payment request receiveedd', total);
+    try{
+        const total = req.query.total;
+        // console.log(typeof total)
+        if(total == 0){
+            throw "Total can't be 0"
+        }
+        
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount: total, //submits unit of currency
+            currency: "usd"
+        });
+    
+        res.status(201).send({
+            clientSecret: paymentIntent.client_secret,
+        })
 
-    console.log('Payment request receiveedd', total);
-
-    const paymentIntent = await stripe.paymentIntents.create({
-        amount: total, //submits unit of currency
-        currency: "usd"
-    });
-
-    res.status(201).send({
-        clientSecret: paymentIntent.client_secret,
-    })
+    }catch(e){
+        res.status(401).send({
+            e
+        })
+    }
 })
 
 // - listen command

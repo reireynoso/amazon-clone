@@ -5,6 +5,9 @@
 - `unique ID => name of clone => build => yes`
 - `npm run build` (run everytime new change)
 - `firebase deploy`
+- possible issues `firebase use <project_id>`
+- Only hosting => `firebase deploy --only hosting`
+- remove rewrites if issues happen in `firebase.json`
 
 ## Stripe Setup
 - `npm install @stripe/stripe-js`
