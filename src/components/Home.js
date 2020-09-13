@@ -2,12 +2,14 @@ import React from 'react'
 import './Home.css'
 import {Carousel} from 'react-responsive-carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import Product from './Product'
+import Product from './Product';
+import ReactNotification from 'react-notifications-component';
 
 export default () => {
 
     return (
         <div className="home">
+            <ReactNotification/>
             <div className="home__container">
                 <Carousel
                     autoPlay 

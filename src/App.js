@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import './App.css';
+import 'react-notifications-component/dist/theme.css';
 
 import Header from './components/Header';
 import Footer from './components/Footer'
@@ -43,6 +44,7 @@ const App = () => {
   return (
   <Router>
     <div className="app">
+      
       <Switch>
         <Route path="/orders">  
           <Header/>

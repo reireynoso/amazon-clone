@@ -1,11 +1,28 @@
 import React from 'react';
 import './Product.css'
 import {useStateValue} from '../StateProvider';
+import { store } from 'react-notifications-component';
 
 export default ({id, title, image,price,rating}) => {
     // destructured from state first arg
     const [{basket}, dispatch] = useStateValue();
     const addToBasket = () => {
+
+        store.addNotification({
+            title: title,
+            message: "Added to cart",
+            type: "info",
+            insert: "bottom",
+            container: "top-right",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+            animationOut: ["animate__animated", "animate__fadeOut"],
+            dismiss: {
+              duration: 2000,
+              onScreen: true,
+              showIcon:true
+            },
+            
+          });
         //dispatch the item to reducer
         dispatch({
             type: "ADD_TO_BASKET",
@@ -18,6 +35,7 @@ export default ({id, title, image,price,rating}) => {
             }
         })
     }
+
     return (
         <div className="product">
             <div className="product__info">
