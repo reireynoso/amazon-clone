@@ -1,10 +1,11 @@
-import React, {forwardRef} from 'react'
+import React, {useState} from 'react'
 import './CheckoutProduct.css'
 
 import {useStateValue} from '../StateProvider'
 
-export default forwardRef(({id,image,title,price,rating, hideButton}, ref) => {
+export default ({id,image,title,price,rating, hideButton}, ref) => {
     const [{basket}, dispatch] = useStateValue();
+    const [removed, setRemoved] = useState(false)
 
     const removeFromBasket = () => {
         dispatch({
@@ -12,8 +13,13 @@ export default forwardRef(({id,image,title,price,rating, hideButton}, ref) => {
             id
         })
     }
+
+    const initiateRemove = () => {
+        setRemoved(true)
+    }
+
     return (
-        <div ref={ref} className="checkoutProduct">
+        <div onAnimationEnd={removeFromBasket} className={`checkoutProduct ${removed ? "fadeOut" : ""}`}>
             <img className="checkoutProduct__image" src={image} alt={image}/>
             <div className="checkoutProduct__info">
                 <p className="checkoutProduct__title">{title}</p>
@@ -30,10 +36,10 @@ export default forwardRef(({id,image,title,price,rating, hideButton}, ref) => {
                 </div>
                 {
                     !hideButton && (
-                        <button onClick={removeFromBasket}>Remove from basket</button>
+                        <button onClick={initiateRemove}>Remove from basket</button>
                     )
                 }
             </div>
         </div>
     )
-})
+}

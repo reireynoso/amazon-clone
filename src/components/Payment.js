@@ -8,7 +8,6 @@ import CurrencyFormat from 'react-currency-format';
 import {getBasketTotal} from '../selector';
 import axios from '../axios';
 import {db} from '../firebase';
-import FlipMove from 'react-flip-move';
     
 export default () => {
 
@@ -111,10 +110,6 @@ export default () => {
 
                     <div className="payment__items">
                         {
-                            //<FlipMove leaveAnimation="elevator">
-
-                        }
-                        {
                             basket.map(item => (
                                 <CheckoutProduct
                                     key={item.id}
@@ -125,10 +120,6 @@ export default () => {
                                     rating={item.rating}
                                 />
                             ))
-                        }
-                        {
-
-                        //    </FlipMove>
                         }
                     </div>
                 </div>

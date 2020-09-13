@@ -1,0 +1,12 @@
+.backtotop {
+    text-align: center;
+    color: #fff;
+    background-color: #37475A;
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.backtotop:hover {
+    background-color: rgba(167, 164, 164, 0.911)
+}

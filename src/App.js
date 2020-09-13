@@ -10,6 +10,7 @@ import Checkout from './components/Checkout';
 import Login from './components/Login';
 import Payment from './components/Payment';
 import Orders from './components/Orders';
+import BackToTop from './components/BackToTop'
 
 import {auth} from './firebase'
 import {useStateValue} from './StateProvider'
@@ -48,6 +49,7 @@ const App = () => {
         <Route path="/orders">  
           <Header/>
           <Orders/>
+          <BackToTop/>
           <Footer/>
         </Route>
         <Route path="/login">  
@@ -56,6 +58,7 @@ const App = () => {
         <Route path="/checkout">
           <Header/>  
           <Checkout/>
+          <BackToTop/>
           <Footer/>
         </Route>
         <Route path="/payment">
@@ -63,11 +66,13 @@ const App = () => {
           <Elements stripe={promise}>
             <Payment/>
           </Elements>  
+          <BackToTop/>
           <Footer/>
         </Route>
         <Route path="/">
           <Header/>
           <Home/>
+          <BackToTop/>
           <Footer/>
         </Route>
       </Switch>

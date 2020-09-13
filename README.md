@@ -2,7 +2,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Amazon Clone
 
-App that emulates Amazon.
+App emulating Amazon's basic interface. Built with React and Firebase. Express is utilized for handling payments with Stripe API.
+
+## Current Features
+- Users can view products
+- Users can create an account
+- Users can add products to their cart and purchase the products.
+- Payment is simulated through Stripe API.
 
 ## Tech Stack
 - React

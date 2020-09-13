@@ -23,7 +23,7 @@ export default ({id, title, image,price,rating}) => {
             animationIn: ["animate__animated", "animate__fadeIn"],
             animationOut: ["animate__animated", "animate__fadeOut"],
             dismiss: {
-              duration: 17500,
+              duration: 3000,
               onScreen: true,
               showIcon:true
             },
