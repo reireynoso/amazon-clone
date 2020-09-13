@@ -3,7 +3,7 @@ import './CheckoutProduct.css'
 
 import {useStateValue} from '../StateProvider'
 
-export default forwardRef(({id,image,title,price,rating}, ref) => {
+export default forwardRef(({id,image,title,price,rating, hideButton}, ref) => {
     const [{basket}, dispatch] = useStateValue();
 
     const removeFromBasket = () => {
@@ -28,7 +28,11 @@ export default forwardRef(({id,image,title,price,rating}, ref) => {
                         .map((_, index) => (<p key={index}>🌟</p>))
                     }
                 </div>
-                <button onClick={removeFromBasket}>Remove from basket</button>
+                {
+                    !hideButton && (
+                        <button onClick={removeFromBasket}>Remove from basket</button>
+                    )
+                }
             </div>
         </div>
     )

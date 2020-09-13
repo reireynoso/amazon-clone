@@ -11,14 +11,10 @@ App that emulates Amazon.
 ## Tools
 - React Router
 - React Currency Format
+- React Responsive Carousel
+- Stripe API
+- Axios
+- Moment 
 
-## Firebase Setup
-- `npm install -g firebase-tools`
-- `firebase login`
-- `firebase init` => Hosting: Configure and deploy firebase Hosting sites
-- `unique ID => name of clone => build => yes`
-- `npm run build` (run everytime new change)
-- `firebase deploy`
-
-## Stripe Setup
-- 
+## Credits
+- Images (including items, logos, and home) are from Amazon and are only utilized for demonstration purposes.

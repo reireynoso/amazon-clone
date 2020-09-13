@@ -10,6 +10,11 @@ const reducer = (state, action) => {
                 ...state,
                 basket: [...state.basket, action.item]
             }
+        case "EMPTY_BASKET": 
+            return {
+                ...state,
+                basket: []
+            }
         case "REMOVE_FROM_BASKET":
             // this approach removes the first instance in the event we have multiple items with the same ID.
             const index = state.basket.findIndex((item) => item.id === action.id)

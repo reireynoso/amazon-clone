@@ -1,3 +1,4 @@
 .app {
   min-width: 620px;
+  overflow: hidden;
 }
