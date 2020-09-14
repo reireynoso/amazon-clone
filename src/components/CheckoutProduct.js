@@ -1,9 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './CheckoutProduct.css'
 
 import {useStateValue} from '../StateProvider'
 
-export default ({id,image,title,price,rating, hideButton}, ref) => {
+export default ({id,image,title,price,rating, hideButton, quantity}) => {
     const [{basket}, dispatch] = useStateValue();
     const [removed, setRemoved] = useState(false)
 
@@ -14,8 +14,24 @@ export default ({id,image,title,price,rating, hideButton}, ref) => {
         })
     }
 
+    console.log(quantity)
+
     const initiateRemove = () => {
         setRemoved(true)
+    }
+
+    const addToBasket = (e) => {
+        dispatch({
+            type: "UPDATE_BASKET",
+            item: {
+                id,
+                title,
+                image,
+                price,
+                rating,
+                quantity: e.target.value 
+            }
+        })
     }
 
     return (
@@ -36,10 +52,30 @@ export default ({id,image,title,price,rating, hideButton}, ref) => {
                 </div>
                 {
                     !hideButton && (
-                        <button onClick={initiateRemove}>Remove from basket</button>
+                        <div className="checkoutProduct__options">
+                            <select onChange={addToBasket} value={quantity}>
+                                <option value={1}>Qty: 1</option>
+                                <option value={2}>Qty: 2</option>
+                                <option value={3}>Qty: 3</option>
+                                <option value={4}>Qty: 4</option>
+                                <option value={5}>Qty: 5</option>
+                                <option value={6}>Qty: 6</option>
+                                <option value={7}>Qty: 7</option>
+                                <option value={8}>Qty: 8</option>
+                                <option value={9}>Qty: 9</option>
+                                <option value={10}>Qty: 10</option>
+                            </select>
+                            <button onClick={initiateRemove}>Remove from basket</button>
+                        </div>
                     )
                 }
             </div>
+            {
+                !hideButton && <div className="checkoutProduct__priceInfo">
+                    <h3>Price</h3>
+                    <strong>$ {price * quantity}</strong>
+                </div>
+            }
         </div>
     )
 }

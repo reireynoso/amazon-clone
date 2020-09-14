@@ -37,7 +37,8 @@ export default ({id, title, image,price,rating}) => {
                 title,
                 image,
                 price,
-                rating
+                rating,
+                quantity: 1
             }
         })
     }
