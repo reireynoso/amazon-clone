@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import './CheckoutProduct.css'
-
+import CurrencyFormat from 'react-currency-format'
 import {useStateValue} from '../StateProvider'
 
 export default ({id,image,title,price,rating, hideButton, quantity}) => {
@@ -73,7 +73,16 @@ export default ({id,image,title,price,rating, hideButton, quantity}) => {
             {
                 !hideButton && <div className="checkoutProduct__priceInfo">
                     <h3>Price</h3>
-                    <strong>$ {price * quantity}</strong>
+                    <CurrencyFormat
+                        renderText={(value) => (
+                            <strong>{value}</strong>
+                        )}
+                        decimalScale={2}
+                        value={price * quantity}
+                        displayType={"text"}
+                        thousandSeparator={true}
+                        prefix={"$"}
+                    />
                 </div>
             }
         </div>

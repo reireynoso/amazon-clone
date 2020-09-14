@@ -1,12 +1,13 @@
 .backtotop {
     text-align: center;
     color: #fff;
-    background-color: #37475A;
+    background-color: #37475a;
     /* width: 100%; */
     padding: 10px;
     cursor: pointer;
+    transition: 0.3s ease-in;
 }
 
 .backtotop:hover {
-    background-color: rgba(167, 164, 164, 0.911)
+    background-color: rgb(68, 84, 107);
 }

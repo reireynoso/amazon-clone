@@ -32,8 +32,8 @@ app.post('/payments/create', async(req,res) => {
     try{
         const total = req.query.total;
         // console.log(typeof total)
-        if(total == 0){
-            throw "Total can't be 0"
+        if(parseInt(total) === 0){
+            throw new Error("Total can't be 0")
         }
         
         const paymentIntent = await stripe.paymentIntents.create({

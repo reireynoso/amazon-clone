@@ -2,6 +2,7 @@ import React from 'react';
 import {Link, useHistory} from 'react-router-dom'
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import RoomIcon from '@material-ui/icons/Room';
 import './Header.css'
 
 import {useStateValue} from '../StateProvider'
@@ -19,44 +20,68 @@ export default () => {
     }
 
     return (
-        <div className="header">
-            <Link to="/">
-                <img alt="icon" className="header__logo" src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"/>
-            </Link>
-
-            <div className="header__search">
-                <input className="header__searchInput" type="text"/>
-                <SearchIcon className="header__searchIcon"/>
-            </div>
-
-            <div className="header__nav">
-                <Link to={!user ?  "/login" : history.location.pathname}>
-                    <div onClick={handleAuth} className="header__option">
-                        <span className="header__optionLineOne">Hello {!user ? "Guest" : user.email}</span>
-                        <span className="header__optionLineTwo">{user ? "Sign Out" : "Sign In"}</span>
-                    </div>                
+        <React.Fragment> 
+            <div className="header">
+                <Link to="/">
+                    <img alt="icon" className="header__logo" src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"/>
                 </Link>
 
-                <Link to="/orders">
-                    <div className="header__option">
-                        <span className="header__optionLineOne">Returns</span>
-                        <span className="header__optionLineTwo">& Orders</span>
-                    </div>
-                </Link>
-
-
-                <div className="header__option">
-                    <span className="header__optionLineOne">Your</span>
-                    <span className="header__optionLineTwo">Prime</span>
+                <div className="header__search">
+                    <input className="header__searchInput" type="text"/>
+                    <SearchIcon className="header__searchIcon"/>
                 </div>
 
-                <Link to="/checkout">
-                    <div className="header__optionBasket">
-                    <ShoppingBasketIcon/>
-                    <span className="header__optionLineTwo header__basketCount">{basket.length}</span>
+                <div className="header__nav">
+                    <Link to={!user ?  "/login" : history.location.pathname}>
+                        <div onClick={handleAuth} className="header__option">
+                            <span className="header__optionLineOne">Hello {!user ? "Guest" : user.email}</span>
+                            <span className="header__optionLineTwo">{user ? "Sign Out" : "Sign In"}</span>
+                        </div>                
+                    </Link>
+
+                    <Link to="/orders">
+                        <div className="header__option">
+                            <span className="header__optionLineOne">Returns</span>
+                            <span className="header__optionLineTwo">& Orders</span>
+                        </div>
+                    </Link>
+
+
+                    <div className="header__option">
+                        <span className="header__optionLineOne">Your</span>
+                        <span className="header__optionLineTwo">Prime</span>
                     </div>
-                </Link>
+
+                    <Link to="/checkout">
+                        <div className="header__optionBasket">
+                        <ShoppingBasketIcon/>
+                        <span className="header__optionLineTwo header__basketCount">{basket.length}</span>
+                        </div>
+                    </Link>
+                </div>
             </div>
-        </div>
+
+            <div className="subheader">
+                <div className="subheader__deliveryInfo">
+                    <RoomIcon/>
+                    <div>
+                        <p>Deliver to {user && user.email}</p>
+                        <p>Jersey City, 07307</p>
+                    </div>
+                </div>
+
+                <div className="subheader__selection">
+                    <p>Today's deals</p>
+                    <p>Find a Gift</p>
+                    <p>Amazon Home</p>
+                    <p>Best Sellers</p>
+                    <p>Whole Foods</p>
+                </div>
+
+                <div className="subheader__deal">
+                    <p>Get 5% back</p>
+                </div>
+            </div>
+        </React.Fragment>
     )
 }
