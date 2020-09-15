@@ -85,6 +85,9 @@
     padding: 8px;
     background-color: #232f3e;
     color: white;
+    position: sticky;
+    top: 60px;
+    z-index: 100
 }
 
 .subheader__deliveryInfo {

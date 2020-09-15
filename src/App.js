@@ -42,6 +42,10 @@ const App = () => {
     })
   }, [])
 
+  useEffect(() => {
+    
+  }, [])
+
   return (
   <Router>
     <div className="app">
