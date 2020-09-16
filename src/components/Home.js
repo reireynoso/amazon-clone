@@ -1,15 +1,22 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import './Home.css'
 import {Carousel as HomeCarousel} from 'react-responsive-carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Product from './Product';
 import ReactNotification from 'react-notifications-component';
 import Carousel from 'react-elastic-carousel';
+import {Link} from 'react-router-dom'
 
-import amazonItems from '../amazon-products-data';
+import items from '../amazon-products-data';
 
 export default () => {
+    const [amazonItems, setAmazonItems] = useState([])
 
+    useEffect(() => {
+        setTimeout(() => {
+            setAmazonItems(items)
+        }, 500)
+    }, [])
     return (
         <div className="home">
             <ReactNotification/>
@@ -109,26 +116,39 @@ export default () => {
                 {
                     amazonItems.map(category => {
                         return (
-                            <Carousel 
-                                key={category.id}
-                                itemsToShow={3}
-                                itemsToScroll={3}
+                            <div 
+                            className="home__categoryContainer"
+                            key={category.id}>
+                                <div        
+                                    className="home__categoryTitle"
                                 >
-                                {
-                                    category.products.map(product => {
-                                        return (
-                                            <Product
-                                                key={product.id}
-                                                id={product.id} 
-                                                title={product.title}
-                                                price={product.price}
-                                                image={product.image}
-                                                rating={Math.round(product.rating)}
-                                            />
-                                        )
-                                    })
-                                }
-                            </Carousel>
+                                    <span>{category.name}</span>
+                                    <span>
+                                        <Link to={`/categories/${category.name}`}>
+                                            View All
+                                        </Link>
+                                    </span>
+                                </div>
+                                <Carousel          
+                                    itemsToShow={3}
+                                    itemsToScroll={3}
+                                    >
+                                    {
+                                        category.products.map(product => {
+                                            return (
+                                                <Product
+                                                    key={product.id}
+                                                    id={product.id} 
+                                                    title={product.title}
+                                                    price={product.price}
+                                                    image={product.image}
+                                                    rating={Math.round(product.rating)}
+                                                />
+                                            )
+                                        })
+                                    }
+                                </Carousel>
+                            </div>
                         )
                     })
                 }
