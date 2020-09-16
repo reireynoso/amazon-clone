@@ -14,8 +14,6 @@ export default ({id,image,title,price,rating, hideButton, quantity}) => {
         })
     }
 
-    console.log(quantity)
-
     const initiateRemove = () => {
         setRemoved(true)
     }

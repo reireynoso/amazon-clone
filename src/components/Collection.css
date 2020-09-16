@@ -1,0 +1,24 @@
+.collection__categoryContainer {
+    background-color: white;
+    margin: 0 15px;
+    margin-bottom: 15px;
+}
+
+.collection__categoryTitle {
+    padding: 10px 15px;
+}
+
+.collection__categoryTitle span:nth-child(1){
+    font-size: 21px;
+    font-weight: 400;
+    color: #444;
+} 
+
+.collection__categoryTitle span:nth-child(2){
+    font-size: 14px;
+    padding-left: 15px;
+} 
+
+.collection__categoryTitle span:nth-child(2) > a:visited{
+    color: #0066c0;
+} 
