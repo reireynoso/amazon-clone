@@ -1,9 +1,12 @@
 import React from 'react'
 import './Home.css'
-import {Carousel} from 'react-responsive-carousel'
+import {Carousel as HomeCarousel} from 'react-responsive-carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Product from './Product';
 import ReactNotification from 'react-notifications-component';
+import Carousel from 'react-elastic-carousel';
+
+import amazonItems from '../amazon-products-data';
 
 export default () => {
 
@@ -11,7 +14,7 @@ export default () => {
         <div className="home">
             <ReactNotification/>
             <div className="home__container">
-                <Carousel
+                <HomeCarousel
                     autoPlay 
                     showArrows={true} 
                     showThumbs={false} 
@@ -50,7 +53,7 @@ export default () => {
                             alt="home"
                         />
                    
-                </Carousel>
+                </HomeCarousel>
 
                 <div className="home__row">
                     <Product
@@ -103,6 +106,32 @@ export default () => {
                     />
                 </div>
 
+                {
+                    amazonItems.map(category => {
+                        return (
+                            <Carousel 
+                                key={category.id}
+                                itemsToShow={3}
+                                itemsToScroll={3}
+                                >
+                                {
+                                    category.products.map(product => {
+                                        return (
+                                            <Product
+                                                key={product.id}
+                                                id={product.id} 
+                                                title={product.title}
+                                                price={product.price}
+                                                image={product.image}
+                                                rating={Math.round(product.rating)}
+                                            />
+                                        )
+                                    })
+                                }
+                            </Carousel>
+                        )
+                    })
+                }
             </div>
         </div>
     )

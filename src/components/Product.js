@@ -43,10 +43,14 @@ export default ({id, title, image,price,rating}) => {
         })
     }
 
+    const truncateTitle = () => {
+        return title.length > 100 ? title.slice(0,97) + "..." : title
+    }
+
     return (
         <div className="product">
             <div className="product__info">
-                <p>{title}</p>
+                <p>{truncateTitle()}</p>
                 <p className="product__price">
                     <small>$</small>
                     <strong>{price}</strong>

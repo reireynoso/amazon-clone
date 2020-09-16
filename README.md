@@ -22,6 +22,7 @@ App emulating Amazon's basic interface. Built with React and Firebase. Express i
 - Axios
 - Moment 
 - React Notifications Component
+- React Elastic Carousel
 
 ## Credits
 - Images (including items, logos, and home) are from Amazon and are only utilized for demonstration purposes.
