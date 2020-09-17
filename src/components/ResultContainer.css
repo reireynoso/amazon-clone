@@ -1,3 +1,7 @@
+.result {
+    min-height: 300px;
+}
+
 .result__header {
     display: flex;
     justify-content: space-between;

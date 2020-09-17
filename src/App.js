@@ -51,6 +51,12 @@ const App = () => {
   <Router>
     <div className="app">
       <Switch>
+        <Route path="/search">  
+          <Header/>
+          <ResultContainer/>
+          <BackToTop/>
+          <Footer/>
+        </Route>
         <Route path="/categories/:category">  
           <Header/>
           <ResultContainer category={true}/>

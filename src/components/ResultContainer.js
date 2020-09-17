@@ -4,6 +4,7 @@ import Product from './Product'
 import {useLocation} from 'react-router-dom'
 import ReactNotification from 'react-notifications-component';
 import ReactPaginate from 'react-paginate';
+import queryString from 'query-string';
 
 import products from '../amazon-products-data'
 
@@ -18,6 +19,8 @@ export default ({category}) => {
     const [startingPoint, setStartingPoint] = useState(0)
     const [sortValue, setSortValue] = useState("")
   
+    const term = queryString.parse(location.search).term
+
     useEffect(() => {
         if(category){
             const pathSplit = location.pathname.split("/")
@@ -33,8 +36,23 @@ export default ({category}) => {
             // => total num of pages
 
             setTotalPages(Math.ceil(products[productIndex].products.length) / 10);
+        }else{  
+
+            if(location.search){
+                // const term = queryString.parse(location.search).term
+                setTitle(term);
+
+                // consider finding efficient algorithm for searching and filtering
+                const match = products.map(category => {
+                    return category.products.filter(product => product.title.toLowerCase().includes(term))
+                })
+                const flattened = match.flat();
+                setProduct(flattened)
+                setTotal(flattened.length)
+                setTotalPages(Math.ceil(flattened.length / 10));
+            }
         }
-    }, [])
+    }, [!category ? term : null])
 
     const handlePageClick = (data) => {
         setStartingPoint(data.selected * 10)

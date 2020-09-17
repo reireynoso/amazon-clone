@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link, useHistory} from 'react-router-dom'
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
@@ -13,9 +13,18 @@ export default () => {
     const [{basket, user}, dispatch] = useStateValue();
     const history = useHistory();
 
+    const [searchTerm, setSearchTerm] = useState("")
+
     const handleAuth = () => {
         if(user){
             auth.signOut();
+        }
+    }
+
+    const handleSubmit = e => {    
+        if(searchTerm && (e.key=== "Enter" || e.type === "click")){
+            history.push(`/search?term=${searchTerm}`)
+            setSearchTerm("")
         }
     }
 
@@ -27,8 +36,14 @@ export default () => {
                 </Link>
 
                 <div className="header__search">
-                    <input className="header__searchInput" type="text"/>
-                    <SearchIcon className="header__searchIcon"/>
+                    <input
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)} 
+                        onKeyPress={handleSubmit}
+                        className="header__searchInput" 
+                        type="text"
+                    />
+                    <SearchIcon onClick={handleSubmit} className="header__searchIcon"/>
                 </div>
 
                 <div className="header__nav">
