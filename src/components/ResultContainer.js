@@ -16,6 +16,7 @@ export default ({category}) => {
     const [totalPages, setTotalPages] = useState(0)
 
     const [startingPoint, setStartingPoint] = useState(0)
+    const [sortValue, setSortValue] = useState("")
   
     useEffect(() => {
         if(category){
@@ -38,6 +39,22 @@ export default ({category}) => {
     const handlePageClick = (data) => {
         setStartingPoint(data.selected * 10)
     }
+
+    const sortResults = () => {
+        const productCopy = [...product]
+        switch(sortValue){
+            case "low": 
+                productCopy.sort((a,b) => a.price - b.price)
+                return productCopy.slice(startingPoint, (startingPoint + 10))
+            case "high": 
+                productCopy.sort((a,b) => b.price - a.price)
+                return productCopy.slice(startingPoint, (startingPoint + 10))
+            case "review": 
+                productCopy.sort((a,b) => b.rating - a.rating)
+                return productCopy.slice(startingPoint, (startingPoint + 10))
+            default: return product.slice(startingPoint,(startingPoint + 10))
+        }  
+    }
     
     
     return (
@@ -45,15 +62,18 @@ export default ({category}) => {
             <ReactNotification/>
             <div className="result__header">
                 <span>{startingPoint + 1}-{startingPoint + 10 > total ? total: startingPoint + 10} of {total} results for "{title}"</span>
-                <select>
-                    <option>Sort by: Featured</option>
+                <select onChange={(e) => setSortValue(e.target.value)}>
+                    <option value="">Sort by: Featured</option>
+                    <option value="low">Sort by: Price: Low to High</option>
+                    <option value="high">Sort by: Price: High to Low</option>
+                    <option value="review">Sort by: Price: Avg. Customer Review</option>
                 </select>
             </div>
 
             <div className="result__products">
 
                 {
-                    product.slice(startingPoint,(startingPoint + 10)).map(item => {
+                    sortResults().map(item => {
                         return <Product
                             key={item.id}
                             id={item.id} 
