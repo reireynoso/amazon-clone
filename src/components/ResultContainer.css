@@ -1,0 +1,35 @@
+.result {
+    
+}
+
+.result__header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 10px 0;
+    padding: 10px 10px 10px 10px;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    box-shadow: 0 0 10px #ddd;
+    background-color: #fff;
+}
+
+.result__header > span {
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.result__header > select {
+    background-color: #e7e9ec;
+}
+
+/* .result__products > h2 {
+    padding-left: 25px;
+} */
+
+.result__products > div {
+    width: 95%;
+    margin: 20px 25px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+    box-shadow: 0 0 10px #ddd;
+}

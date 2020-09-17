@@ -24,7 +24,7 @@ export default ({index}) => {
             >
                 <span>{name}</span>
                 <span>
-                    <Link to={`/categories/${name}`}>
+                    <Link to={`/categories/${name.replace(" ", "_")}`}>
                         View All
                     </Link>
                 </span>

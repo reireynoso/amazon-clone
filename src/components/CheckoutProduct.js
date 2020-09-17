@@ -72,9 +72,9 @@ export default ({id,image,title,price,rating, hideButton, quantity}) => {
                 !hideButton && <div className="checkoutProduct__priceInfo">
                     <h3>Price</h3>
                     <CurrencyFormat
-                        renderText={(value) => (
-                            <strong>{value}</strong>
-                        )}
+                        renderText={(value) => {
+                            return <strong>{value}</strong>
+                        }}
                         decimalScale={2}
                         value={price * quantity}
                         displayType={"text"}

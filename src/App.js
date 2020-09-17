@@ -10,7 +10,8 @@ import Checkout from './components/Checkout';
 import Login from './components/Login';
 import Payment from './components/Payment';
 import Orders from './components/Orders';
-import BackToTop from './components/BackToTop'
+import BackToTop from './components/BackToTop';
+import ResultContainer from './components/ResultContainer';
 
 import {auth} from './firebase'
 import {useStateValue} from './StateProvider'
@@ -50,6 +51,12 @@ const App = () => {
   <Router>
     <div className="app">
       <Switch>
+        <Route path="/categories/:category">  
+          <Header/>
+          <ResultContainer category={true}/>
+          <BackToTop/>
+          <Footer/>
+        </Route>
         <Route path="/orders">  
           <Header/>
           <Orders/>
