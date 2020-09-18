@@ -9,7 +9,7 @@ export default ({id, title, image,price,rating}) => {
     const [{basket, user}, dispatch] = useStateValue();
 
     const notification = <div className="product__notification">
-        <img src={image}/>
+        <img alt="notification" src={image}/>
         <p>{title}</p>
     </div>
 
@@ -24,15 +24,16 @@ export default ({id, title, image,price,rating}) => {
                     if(item.quantity === 10){
                         return item
                     }
-
-                    // update item in the database
-                    db.collection('users') // reach into dbs collection of users
-                        .doc(user?.uid) // specific user logged in
-                        .collection('cart') // the user's orders
-                        .doc(id) //create a document with a payment id
-                        .update({
-                            quantity: item.quantity + 1
-                        })
+                    if(user){
+                        // update item in the database
+                        db.collection('users') // reach into dbs collection of users
+                            .doc(user?.uid) // specific user logged in
+                            .collection('cart') // the user's orders
+                            .doc(id) //create a document with a payment id
+                            .update({
+                                quantity: item.quantity + 1
+                            })
+                    }
 
                     return {
                         ...item,
@@ -49,12 +50,14 @@ export default ({id, title, image,price,rating}) => {
                 rating,
                 quantity: 1
             }
-            // add item in the dataase
-            db.collection('users') // reach into dbs collection of users
-            .doc(user?.uid) // specific user logged in
-            .collection('cart') // the user's orders
-            .doc(id) //create a document with a payment id
-            .set(newItem) // add information in
+            if(user){
+                // add item in the dataase
+                db.collection('users') // reach into dbs collection of users
+                .doc(user?.uid) // specific user logged in
+                .collection('cart') // the user's orders
+                .doc(id) //create a document with a payment id
+                .set(newItem) // add information in
+            }
 
             updatedArray = [...basket, {
                 id,

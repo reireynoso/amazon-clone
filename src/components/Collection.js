@@ -12,9 +12,14 @@ export default ({index}) => {
     const {name} = items[index]
 
     useEffect(() => {
-        setTimeout(() => {
+        const loadItems = setTimeout(() => {
             setAmazonItems(items[index].products)
         }, 500)
+
+        // avoid memory leak if component dismounts before running setTimeout
+        return () => {
+            clearTimeout(loadItems)
+        }
     }, [])
 
     return (

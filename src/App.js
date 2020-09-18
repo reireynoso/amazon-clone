@@ -50,7 +50,6 @@ const App = () => {
       .collection('users')
       .doc(user?.uid)
       .collection('cart')
-      // .orderBy('created', 'desc') // sort the collection by descending order
       .onSnapshot(snapshot => { //gives us realtiem snapshot of the database of what it looks like. it will update based on that value if it changes in the db
           // snapshot.docs to access all orders as documents. structure the object
           const basket = snapshot.docs.map(doc => ({

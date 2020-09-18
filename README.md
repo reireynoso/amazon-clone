@@ -10,14 +10,12 @@ App emulating Amazon's basic interface. Built with React and Firebase. Express i
 - Users can add products to their cart and purchase the products.
 - Payment is simulated through Stripe API.
 - Users can view products based on category
-- Users can search for products
-
-## Work in Progress
-- Persist cart 
+- Users can search for products (that exist)
 
 ## Tech Stack
 - React
 - Firebase
+- Cloud Firestore
 
 ## Tools
 - React Router

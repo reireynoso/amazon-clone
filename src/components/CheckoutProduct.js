@@ -9,12 +9,14 @@ export default ({id,image,title,price,rating, hideButton, quantity}) => {
     const [removed, setRemoved] = useState(false)
 
     const removeFromBasket = () => {
-        db.collection('users')
-            .doc(user?.uid)
-            .collection('cart')
-            .doc(id)
-            .delete();
-            
+        if(user){
+            db.collection('users')
+                .doc(user?.uid)
+                .collection('cart')
+                .doc(id)
+                .delete();
+        }
+
         dispatch({
             type: "REMOVE_FROM_BASKET",
             id
@@ -26,14 +28,15 @@ export default ({id,image,title,price,rating, hideButton, quantity}) => {
     }
 
     const addToBasket = (e) => {
-
-        db.collection('users') // reach into dbs collection of users
-            .doc(user?.uid) // specific user logged in
-            .collection('cart') // the user's orders
-            .doc(id) //create a document with a payment id
-            .update({
-                quantity: e.target.value
-            })
+        if(user){
+            db.collection('users') // reach into dbs collection of users
+                .doc(user?.uid) // specific user logged in
+                .collection('cart') // the user's orders
+                .doc(id) //create a document with a payment id
+                .update({
+                    quantity: e.target.value
+                })
+        }
         
         dispatch({
             type: "UPDATE_BASKET",

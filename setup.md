@@ -43,4 +43,3 @@ const elements = useElements();
 ## Cloud firestore setup
 - Go to Cloud Firestore on firebase.
 - Create database => test mode
-- 
