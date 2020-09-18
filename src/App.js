@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import './App.css';
 import 'react-notifications-component/dist/theme.css';
+import {db} from './firebase';
 
 import Header from './components/Header';
 import Footer from './components/Footer'
@@ -22,7 +23,7 @@ import {Elements} from '@stripe/react-stripe-js'
 const promise = loadStripe(process.env.REACT_APP_STRIPE_API);
 
 const App = () => {
-  const [{ }, dispatch] = useStateValue();
+  const [{user }, dispatch] = useStateValue();
 
   useEffect(() => {
     auth.onAuthStateChanged(authUser => {
@@ -44,8 +45,26 @@ const App = () => {
   }, [])
 
   useEffect(() => {
-    
-  }, [])
+    if(user){
+      db
+      .collection('users')
+      .doc(user?.uid)
+      .collection('cart')
+      // .orderBy('created', 'desc') // sort the collection by descending order
+      .onSnapshot(snapshot => { //gives us realtiem snapshot of the database of what it looks like. it will update based on that value if it changes in the db
+          // snapshot.docs to access all orders as documents. structure the object
+          const basket = snapshot.docs.map(doc => ({
+              id: doc.id,
+              ...doc.data()
+          }))
+          dispatch({
+            type: "SET_BASKET",
+            basket
+          })
+        }
+      )
+    }
+  }, [user])
 
   return (
   <Router>

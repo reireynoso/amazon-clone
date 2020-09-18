@@ -67,6 +67,15 @@ export default () => {
             setError(null)
             setProcessing(false)
 
+            // delete items in cart in the database
+            db.collection('users') // reach into dbs collection of users
+                .doc(user?.uid) // specific user logged in
+                .collection('cart') // the user's orders
+                .get()
+                .then(res => {
+                    res.forEach(el => el.ref.delete())
+                })
+
             dispatch({
                 type: 'EMPTY_BASKET'
             })

@@ -1,13 +1,20 @@
 import React, {useState} from 'react'
 import './CheckoutProduct.css'
 import CurrencyFormat from 'react-currency-format'
-import {useStateValue} from '../StateProvider'
+import {useStateValue} from '../StateProvider';
+import {db} from '../firebase';
 
 export default ({id,image,title,price,rating, hideButton, quantity}) => {
-    const [{basket}, dispatch] = useStateValue();
+    const [{user}, dispatch] = useStateValue();
     const [removed, setRemoved] = useState(false)
 
     const removeFromBasket = () => {
+        db.collection('users')
+            .doc(user?.uid)
+            .collection('cart')
+            .doc(id)
+            .delete();
+            
         dispatch({
             type: "REMOVE_FROM_BASKET",
             id
@@ -19,6 +26,15 @@ export default ({id,image,title,price,rating, hideButton, quantity}) => {
     }
 
     const addToBasket = (e) => {
+
+        db.collection('users') // reach into dbs collection of users
+            .doc(user?.uid) // specific user logged in
+            .collection('cart') // the user's orders
+            .doc(id) //create a document with a payment id
+            .update({
+                quantity: e.target.value
+            })
+        
         dispatch({
             type: "UPDATE_BASKET",
             item: {
