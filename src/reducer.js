@@ -11,29 +11,8 @@ const reducer = (state, action) => {
                 basket: action.basket
             }
         case "ADD_TO_BASKET":
-            // const existingItem = state.basket.findIndex(item => item.id === action.item.id)
-
-            // if(existingItem > -1){
-            //     return {
-            //         ...state,
-            //         basket: state.basket.map(item => {
-            //             if(item.id === action.item.id){
-            //                 if(item.quantity === 10){
-            //                     return item
-            //                 }
-
-            //                 return {
-            //                     ...item,
-            //                     quantity: item.quantity + 1
-            //                 }
-            //             }
-            //         })
-            //     }
-            // }
-
             return {
                 ...state,
-                // basket: [...state.basket, action.item]
                 basket: action.basket
             }
         case "UPDATE_BASKET": 
