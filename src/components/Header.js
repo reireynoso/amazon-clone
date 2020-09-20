@@ -10,7 +10,7 @@ import {auth} from '../firebase'
 
 export default () => {
 
-    const [{basket, user}, dispatch] = useStateValue();
+    const [{basket, user}] = useStateValue();
     const history = useHistory();
 
     const [searchTerm, setSearchTerm] = useState("")

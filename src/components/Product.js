@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Product.css'
 import {useStateValue} from '../StateProvider';
 import { store } from 'react-notifications-component';
@@ -7,6 +7,7 @@ import {db} from '../firebase';
 export default ({id, title, image,price,rating}) => {
     // destructured from state first arg
     const [{basket, user}, dispatch] = useStateValue();
+    const [clickable, setClickable] = useState(true);
 
     const notification = <div className="product__notification">
         <img alt="notification" src={image}/>
@@ -14,14 +15,14 @@ export default ({id, title, image,price,rating}) => {
     </div>
 
     const addToBasket = () => {
+        setClickable(false)
         // check if item exists in basket already
         const existingItem = basket.findIndex(item => item.id === id)
         let updatedArray;
         if(existingItem > -1){
-
             updatedArray = basket.map(item => {
                 if(item.id === id){
-                    if(item.quantity === 10){
+                    if(parseInt(item.quantity) === 10){
                         return item
                     }
                     if(user){
@@ -31,15 +32,16 @@ export default ({id, title, image,price,rating}) => {
                             .collection('cart') // the user's orders
                             .doc(id) //create a document with a payment id
                             .update({
-                                quantity: item.quantity + 1
+                                quantity: parseInt(item.quantity) + 1
                             })
                     }
-
+                    
                     return {
                         ...item,
-                        quantity: item.quantity + 1
+                        quantity: parseInt(item.quantity) + 1
                     }
                 }
+                return item
             })
         }
         else{
@@ -74,11 +76,11 @@ export default ({id, title, image,price,rating}) => {
             animationIn: ["animate__animated", "animate__fadeIn"],
             animationOut: ["animate__animated", "animate__fadeOut"],
             dismiss: {
-              duration: 3000,
+              duration: 1500,
               onScreen: true,
               showIcon:true
             },
-            
+            onRemoval: () => setClickable(true)
           });
         //dispatch the item to reducer
         // dispatch({
@@ -121,7 +123,7 @@ export default ({id, title, image,price,rating}) => {
             </div>
 
             <img src={image} alt={image}/>
-            <button onClick={addToBasket}>Add to Basket</button>
+            <button disabled={!clickable} onClick={addToBasket}>{clickable ? "Add to Basket" : "Adding..."}</button>
         </div>
     )
 }

@@ -7,7 +7,7 @@ import {getBasketTotal} from '../selector'
 
 export default () => {
 
-    const [{basket}, dispatch] = useStateValue();
+    const [{basket}] = useStateValue();
     const history = useHistory();
     return (
         <div className="subtotal">
