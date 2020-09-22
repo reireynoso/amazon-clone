@@ -5,14 +5,14 @@ import {useStateValue} from '../StateProvider'
 import Order from './Order';
 
 export default () => {
-    const [{user}, dispatch] = useStateValue();
+    const [{user}] = useStateValue();
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
         if(user){
             db
             .collection('users')
-            .doc(user?.uid)
+            .doc(user.uid)
             .collection('orders')
             .orderBy('created', 'desc') // sort the collection by descending order
             .onSnapshot(snapshot => ( //gives us realtiem snapshot of the database of what it looks like. it will update based on that value if it changes in the db

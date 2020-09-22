@@ -11,7 +11,7 @@ export default ({id,image,title,price,rating, hideButton, quantity}) => {
     const removeFromBasket = () => {
         if(user){
             db.collection('users')
-                .doc(user?.uid)
+                .doc(user.uid)
                 .collection('cart')
                 .doc(id)
                 .delete();

@@ -28,7 +28,7 @@ export default ({id, title, image,price,rating}) => {
                     if(user){
                         // update item in the database
                         db.collection('users') // reach into dbs collection of users
-                            .doc(user?.uid) // specific user logged in
+                            .doc(user.uid) // specific user logged in
                             .collection('cart') // the user's orders
                             .doc(id) //create a document with a payment id
                             .update({
@@ -41,6 +41,7 @@ export default ({id, title, image,price,rating}) => {
                         quantity: parseInt(item.quantity) + 1
                     }
                 }
+
                 return item
             })
         }
@@ -55,7 +56,7 @@ export default ({id, title, image,price,rating}) => {
             if(user){
                 // add item in the dataase
                 db.collection('users') // reach into dbs collection of users
-                .doc(user?.uid) // specific user logged in
+                .doc(user.uid) // specific user logged in
                 .collection('cart') // the user's orders
                 .doc(id) //create a document with a payment id
                 .set(newItem) // add information in
@@ -82,18 +83,7 @@ export default ({id, title, image,price,rating}) => {
             },
             onRemoval: () => setClickable(true)
           });
-        //dispatch the item to reducer
-        // dispatch({
-        //     type: "ADD_TO_BASKET",
-        //     item: {
-        //         id,
-        //         title,
-        //         image,
-        //         price,
-        //         rating,
-        //         quantity: 1
-        //     }
-        // })
+
         dispatch({
             type: "ADD_TO_BASKET",
             basket: updatedArray
